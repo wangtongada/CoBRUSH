@@ -394,7 +394,7 @@ class hyb(object):
                 FP = np.array(np.sum(RMatrix[Yhat_neg_index.reshape(-1,1),select],axis = 0) - TP)
                 TN = np.sum(Y[Yhat_neg_index]==0)-FP
                 FN = sum(Y[Yhat_neg_index]) - TP
-                score = (FP + FN)+ self.beta * (TN + FN)
+                score = FP + FN
                 # score = (TP.astype(float)/(TP+FP+1)) + self.alpha * supp[select] # using precision as the criteria
                 add_rule = select[sample(list(np.where(score==min(score))[0]),1)[0]] 
             if add_rule not in rules:
